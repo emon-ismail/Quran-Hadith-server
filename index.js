@@ -4,6 +4,11 @@ const cors = require('cors');
 require('dotenv').config()
 const port = process.env.PORT || 5000;
 
+app.get('/favicon.ico', (req, res) => {
+  // You can send a simple 200 OK response or serve a default favicon file here.
+  res.status(200).send('OK');
+});
+
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -12,8 +17,9 @@ app.use(express.json());
 
 
 
-const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.swu9d.mongodb.net/?retryWrites=true&w=majority`;
+const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.swu9d.mongodb.net/?retryWrites=true&w=majority`;
+const uri = "mongodb+srv://quranUser:ghT0ty8IKHsKji1Q@cluster0.ww1mwol.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -58,7 +64,7 @@ async function run() {
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
-    // await client.close();
+//  await client.close();
   }
 }
 run().catch(console.dir);
@@ -76,3 +82,16 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Quran is running on port ${port}`);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
